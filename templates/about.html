@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neo-Transit - About Our Vision</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0e1a 0%, #1a1f3a 50%, #2d1b69 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: radial-gradient(ellipse at center, rgba(0, 150, 255, 0.1) 0%, transparent 70%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(45deg, rgba(0, 255, 255, 0.02) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(255, 0, 255, 0.02) 25%, transparent 25%);
+            background-size: 60px 60px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(60px, 60px); }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 4rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #00ffff, #ff00ff, #ffff00, #00ffff);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease-in-out infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+            margin: 10px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #00ffff;
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #ff00ff, #00ffff);
+            border-radius: 2px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+            animation: rotate 4s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 255, 255, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.2);
+        }
+
+        @keyframes rotate {
+            100% { transform: rotate(360deg); }
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-align: center;
+            filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.5));
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #00ffff;
+            text-align: center;
+        }
+
+        .feature-desc {
+            opacity: 0.9;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .vision-text {
+            font-size: 1.2rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        .tech-showcase {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 50px 0;
+            gap: 30px;
+        }
+
+        .tech-item {
+            text-align: center;
+            padding: 20px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            min-width: 200px;
+        }
+
+        .tech-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: scale(1.05);
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .stats {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-content">
+            <div class="logo floating">NEO-TRANSIT</div>
+            <div class="tagline pulse">Revolutionizing Urban Mobility Through Quantum Intelligence</div>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number" data-target="99.7">0</div>
+                    <div class="stat-label">Efficiency Rate</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" data-target="0.003">0</div>
+                    <div class="stat-label">Collision Rate</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" data-target="15">0</div>
+                    <div class="stat-label">Million Vehicles</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" data-target="2087">0</div>
+                    <div class="stat-label">Operational Since</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2 class="section-title">Our Vision</h2>
+        <div class="vision-text">
+            In the year 2087, we've transformed urban transportation from chaos into symphony. Neo-Transit represents the pinnacle of quantum-powered traffic management, where artificial intelligence, sustainable energy, and human ingenuity converge to create seamless mobility for all citizens of our megacity.
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🚗</div>
+                <div class="feature-title">Autonomous Fleet Management</div>
+                <div class="feature-desc">Our quantum AI orchestrates millions of self-driving vehicles, optimizing routes in real-time and eliminating traffic congestion through predictive algorithms.</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🌐</div>
+                <div class="feature-title">Neural Traffic Grid</div>
+                <div class="feature-desc">A city-wide neural network processes trillions of data points per second, creating a living, breathing traffic ecosystem that adapts to every citizen's needs.</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <div class="feature-title">Zero-Emission Transport</div>
+                <div class="feature-desc">Powered entirely by fusion energy and quantum batteries, our transport network achieves complete carbon neutrality while maintaining peak performance.</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🛸</div>
+                <div class="feature-title">Multi-Dimensional Routing</div>
+                <div class="feature-desc">Ground, elevated highways, underground tunnels, and aerial corridors work in perfect harmony, creating a truly three-dimensional transportation matrix.</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🧠</div>
+                <div class="feature-title">Predictive Intelligence</div>
+                <div class="feature-desc">Our systems don't just respond to traffic—they predict it. Advanced algorithms forecast movement patterns up to 72 hours in advance.</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <div class="feature-title">Quantum Security</div>
+                <div class="feature-desc">Military-grade quantum encryption protects every transaction, route, and personal data point, ensuring absolute privacy and security for all users.</div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Technology Stack</h2>
+        <div class="tech-showcase">
+            <div class="tech-item">
+                <div style="font-size: 2rem; margin-bottom: 10px;">🔮</div>
+                <div style="font-weight: bold; color: #00ffff;">Quantum Computing</div>
+                <div style="font-size: 0.9rem; opacity: 0.8;">Processing infinite possibilities</div>
+            </div>
+            <div class="tech-item">
+                <div style="font-size: 2rem; margin-bottom: 10px;">🤖</div>
+                <div style="font-weight: bold; color: #ff00ff;">Neural AI</div>
+                <div style="font-size: 0.9rem; opacity: 0.8;">Learning and adapting continuously</div>
+            </div>
+            <div class="tech-item">
+                <div style="font-size: 2rem; margin-bottom: 10px;">🌊</div>
+                <div style="font-weight: bold; color: #ffff00;">Holographic Interfaces</div>
+                <div style="font-size: 0.9rem; opacity: 0.8;">Intuitive 3D interactions</div>
+            </div>
+            <div class="tech-item">
+                <div style="font-size: 2rem; margin-bottom: 10px;">⚛️</div>
+                <div style="font-weight: bold; color: #00ff00;">Fusion Power</div>
+                <div style="font-size: 0.9rem; opacity: 0.8;">Clean, limitless energy</div>
+            </div>
+        </div>
+
+        <div class="vision-text">
+            Join us in shaping the future of urban mobility. Neo-Transit isn't just about getting from point A to point B—it's about reimagining how humanity moves, connects, and thrives in the cities of tomorrow.
+        </div>
+    </div>
+
+    <script>
+        // Animated counter for statistics
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            
+            counters.forEach(counter => {
+                const target = parseFloat(counter.getAttribute('data-target'));
+                const increment = target / 200;
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    
+                    if (target < 1) {
+                        counter.textContent = current.toFixed(3) + '%';
+                    } else if (target > 1000) {
+                        counter.textContent = Math.floor(current).toLocaleString();
+                    } else {
+                        counter.textContent = current.toFixed(1) + '%';
+                    }
+                }, 20);
+            });
+        }
+
+        // Trigger animations when page loads
+        window.addEventListener('load', () => {
+            setTimeout(animateCounters, 1000);
+        });
+
+        // Add interactive hover effects
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.feature-card');
+            
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.background = 'rgba(0, 255, 255, 0.1)';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.background = 'rgba(255, 255, 255, 0.05)';
+                });
+            });
+        });
+
+        // Parallax scroll effect for hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            const rate = scrolled * -0.5;
+            
+            hero.style.transform = `translateY(${rate}px)`;
+        });
+    </script>
+</body>
+</html>
