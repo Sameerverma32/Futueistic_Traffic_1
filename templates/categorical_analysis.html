@@ -1,49 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div class="dashboard-grid">
-                <div class="dashboard-card">
-                    <div class="card-header">
-                        <h3 class="card-title">
-                            <i class="fas fa-chart-bar"></i>
-                            Vehicle Type Distribution
-                        </h3>
-                    </div>
-                    {{graph1_html|safe}}
-                    <div class="insights">
-                        <div class="insight-item">
-                            <div class="insight-icon">
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <div class="insight-content">
-                                <div class="insight-title">Top Demanded Roles</div>
-                                <div class="insight-description">Software Engineering and Data Science roles dominate the current job market with highest demand.</div>
-                            </div>
-                        </div>
-                        <div class="insight-item">
-                            <div class="insight-icon">
-                                <i class="fas fa-chart-line"></i>
-                            </div>
-                            <div class="insight-content">
-                                <div class="insight-title">Emerging Trends</div>
-                                <div class="insight-description">AI and Machine Learning positions showing 40% growth in the last quarter.</div>
-                            </div>
-                        </div>
-                        <div class="insight-item">
-                            <div class="insight-icon">
-                                <i class="fas fa-industry"></i>
-                            </div>
-                            <div class="insight-content">
-                                <div class="insight-title">Industry Focus</div>
-                                <div class="insight-description">Tech and Healthcare sectors leading in new job openings and opportunities.</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-</body>
-</html>
+{% block content %}
+
+{{graph1_html|safe}}
+{{graph2_html|safe}}
+{{graph3_html|safe}}
+{{graph4_html|safe}}
+
+{% endblock %}

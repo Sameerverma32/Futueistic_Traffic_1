@@ -88,11 +88,18 @@ def Vehicle_Type_Distribution():
     graph1_html = pio.to_html(fig, full_html=False)
     return graph1_html
 
+def Traffic_Condition_Distribution():
+    fig = px.treemap(df, path=["City","Vehicle Type"], title="Treemap: City & Vehicle Type Share")
+    graph2_html = pio.to_html(fig, full_html=False)
+    return graph2_html
 
 @app.route('/categorical_analysis')
 def categorical_analysis():
     graph1 = Vehicle_Type_Distribution()
-    return render_template('job_analysis.html', graph1_html=graph1)
+    return render_template('categorical_analysis.html', graph1_html=graph1)
+
+@app.route('/categorical_analysis')
+
 
 
 
