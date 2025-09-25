@@ -96,7 +96,8 @@ def Traffic_Condition_Distribution():
 @app.route('/categorical_analysis')
 def categorical_analysis():
     graph1 = Vehicle_Type_Distribution()
-    return render_template('categorical_analysis.html', graph1_html=graph1)
+    graph2 = Traffic_Condition_Distribution()
+    return render_template('categorical_analysis.html', graph1_html=graph1, graph2_html=graph2)
 
 @app.route('/categorical_analysis')
 
