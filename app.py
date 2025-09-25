@@ -93,11 +93,29 @@ def Traffic_Condition_Distribution():
     graph2_html = pio.to_html(fig, full_html=False)
     return graph2_html
 
+def Economic_Condition_Distribution():
+    fig = px.pie(df, names="Economic Condition", title="Economic Condition Distribution")
+    graph3_html = pio.to_html(fig, full_html=False)
+    return graph3_html
+
+def Distribution_By_Weekday():
+    fig = px.bar(df, x="Day Of Week", y="Traffic Density", title="Day of Week vs Avg Traffic Density", color="Day Of Week")
+    graph4_html = pio.to_html(fig, full_html=False)
+    return graph4_html
+
+def Peek_Hour_Analysis():
+    fig = px.sunburst(df, path=["Is Peak Hour", "Vehicle Type"], title="Sunburst: Is Peak Hour & Vehicle Type")
+    graph5_html = pio.to_html(fig, full_html=False)
+    return graph5_html
+
 @app.route('/categorical_analysis')
 def categorical_analysis():
     graph1 = Vehicle_Type_Distribution()
     graph2 = Traffic_Condition_Distribution()
-    return render_template('categorical_analysis.html', graph1_html=graph1, graph2_html=graph2)
+    graph3 = Economic_Condition_Distribution()
+    graph4 = Distribution_By_Weekday()
+    graph5 = Peek_Hour_Analysis()
+    return render_template('categorical_analysis.html', graph1_html=graph1, graph2_html=graph2, graph3_html=graph3, graph4_html=graph4, graph5_html=graph5)
 
 
 
