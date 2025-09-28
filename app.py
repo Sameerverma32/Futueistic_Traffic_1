@@ -108,6 +108,11 @@ def Peek_Hour_Analysis():
     graph5_html = pio.to_html(fig, full_html=False)
     return graph5_html
 
+def Traffic_Density_by_day():
+    fig  = px.pie(df, names='Day Of Week', title='Traffic Distribution by Day of the Week')
+    graph6_html = pio.to_html(fig, full_html=False)
+    return graph6_html
+
 @app.route('/categorical_analysis')
 def categorical_analysis():
     graph1 = Vehicle_Type_Distribution()
@@ -117,7 +122,10 @@ def categorical_analysis():
     graph5 = Peek_Hour_Analysis()
     return render_template('categorical_analysis.html', graph1_html=graph1, graph2_html=graph2, graph3_html=graph3, graph4_html=graph4, graph5_html=graph5)
 
-
+@app.route('/numerical_analysis')
+def numerical_analysis():
+    graph6 = Traffic_Density_by_day()
+    return render_template('numerical_analysis.html', graph6_html=graph6)
 
 
 
