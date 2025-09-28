@@ -1,9 +1,121 @@
-{%block content%}
+{% extends "base.html" %}
 
-{{ graph6_html|safe }}
-{{ graph7_html|safe }}
-{{ graph8_html|safe }}
-{{ graph9_html|safe }}
-{{ graph10_html|safe }}
+{% block title %}Numerical Traffic Analysis{% endblock %}
 
+{% block content %}
+<div class="container-fluid py-4">
+    <h1 class="text-center mb-4">Numerical Traffic Patterns</h1>
+    <p class="text-center text-muted mb-5">Detailed analysis of quantitative traffic metrics and their correlations</p>
+
+    <!-- Traffic Density vs Time -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h3>Traffic Density Time Series</h3>
+            <p class="text-muted">
+                Temporal analysis showing how traffic density varies over different time periods,
+                helping identify patterns and trends in traffic flow.
+            </p>
+        </div>
+        <div class="card-body">
+            {{ graph6_html|safe }}
+        </div>
+    </div>
+
+    <!-- Speed vs Density -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h3>Speed-Density Relationship</h3>
+            <p class="text-muted">
+                Correlation between traffic speed and density, illustrating how vehicle speed
+                changes with varying traffic density levels.
+            </p>
+        </div>
+        <div class="card-body">
+            {{ graph7_html|safe }}
+        </div>
+    </div>
+
+    <!-- Temperature Impact -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h3>Temperature Impact Analysis</h3>
+            <p class="text-muted">
+                Analysis of how temperature variations affect traffic patterns and density,
+                showing seasonal and weather-related impacts.
+            </p>
+        </div>
+        <div class="card-body">
+            {{ graph8_html|safe }}
+        </div>
+    </div>
+
+    <!-- Distance vs Time -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h3>Distance-Time Analysis</h3>
+            <p class="text-muted">
+                Relationship between travel distance and time, showing how traffic conditions
+                affect journey durations across different routes.
+            </p>
+        </div>
+        <div class="card-body">
+            {{ graph9_html|safe }}
+        </div>
+    </div>
+
+    <!-- Traffic Flow Rate -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h3>Traffic Flow Rate Analysis</h3>
+            <p class="text-muted">
+                Measurement of vehicles passing through specific points, helping understand
+                traffic volume and capacity utilization.
+            </p>
+        </div>
+        <div class="card-body">
+            {{ graph10_html|safe }}
+        </div>
+    </div>
+
+    <!-- Correlation Matrix -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h3>Variable Correlation Matrix</h3>
+            <p class="text-muted">
+                Heat map showing correlations between different numerical variables,
+                highlighting key relationships in traffic patterns.
+            </p>
+        </div>
+        <div class="card-body">
+            {{ graph11_html|safe }}
+        </div>
+    </div>
+</div>
+
+<style>
+.card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    margin-bottom: 20px;
+}
+.card:hover {
+    transform: translateY(-5px);
+}
+.card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    padding: 1.5rem;
+}
+.card-header h3 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+.text-muted {
+    font-size: 0.9rem;
+}
+.card-body {
+    padding: 1.5rem;
+}
+</style>
 {% endblock %}

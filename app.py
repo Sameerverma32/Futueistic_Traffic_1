@@ -113,6 +113,74 @@ def Traffic_Density_by_day():
     graph6_html = pio.to_html(fig, full_html=False)
     return graph6_html
 
+def Speed_Distribution():
+    fig = px.histogram(df, x="Speed", nbins=50, title="Speed Distribution")
+    graph7_html = pio.to_html(fig, full_html=False)
+    return graph7_html
+
+def Speed_vs_Vehicle_Type():
+    fig = px.box(df, x="Vehicle Type", y="Speed", title="Speed by Vehicle Type")
+    graph8_html = pio.to_html(fig, full_html=False)
+    return graph8_html
+
+def Traffic_Density_Distribution():
+    fig = px.histogram(df, x="Traffic Density", nbins=50, title="Traffic Density Distribution")
+    graph9_html = pio.to_html(fig, full_html=False)
+    return graph9_html
+
+def Traffic_Density_by_Weather():
+    fig = px.box(df, x="Weather", y="Traffic Density", title="Traffic Density by Weather")
+    graph10_html = pio.to_html(fig, full_html=False)
+    return graph10_html
+
+def Hours_vs_Speed():
+    fig = px.scatter(df.sample(5000), x="Hour Of Day", y="Speed", size="Traffic Density",
+                title="Hour vs Speed (Bubble=Traffic Density)")
+    graph11_html = pio.to_html(fig, full_html=False)
+    return graph11_html
+
+def Traffic_Distribution_by_Day_of_Week():
+    fig = px.pie(df, names='Day Of Week', title='Traffic Distribution by Day of the Week')
+    graph12_html = pio.to_html(fig, full_html=False)
+    return graph12_html
+
+def Hourly_Speed_vs_Energy():
+    fig = px.scatter(df.sample(5000), x="Speed", y="Energy Consumption",
+                animation_frame="Hour Of Day", animation_group="City",
+                size="Traffic Density", color="City",
+                title="Animated Scatter: Hourly Speed vs Energy")
+    graph13_html = pio.to_html(fig, full_html=False)
+    return graph13_html
+
+def City_wise_avg_Speed():
+    fig = px.line(df.groupby(["Day Of Week","City"])["Speed"].mean().reset_index(),
+            x="Day Of Week", y="Speed", color="City", title="City wise Avg Speed across Days")
+    graph14_html = pio.to_html(fig, full_html=False)
+    return graph14_html
+
+def Random_Event_by_Weather():
+    fig = px.bar(df.groupby("Weather")["Random Event Occurred"].mean().reset_index(),
+             x="Weather", y="Random Event Occurred", title="Random Events % by Weather")
+    graph15_html = pio.to_html(fig, full_html=False)
+    return graph15_html
+
+def Day_vvs_Hours_vs_Traffic_Density():
+    fig = px.density_heatmap(df, x="Hour Of Day", y="Day Of Week", z="Traffic Density",
+                        title="Day vs Hour vs Traffic Density")
+    graph16_html = pio.to_html(fig, full_html=False)
+    return graph16_html
+
+def Traffic_Density_Treemap():
+    fig = px.treemap(df, path=["City", "Day Of Week"], values="Traffic Density",
+                 title="Traffic Density Treemap")
+    graph17_html = pio.to_html(fig, full_html=False)
+    return graph17_html
+
+def Economic_Condition_Distribution():
+    fig = px.sunburst(df, path=["Economic Condition", "Vehicle Type"], title="Sunburst: Economic Condition & Vehicle Type")
+    graph18_html = pio.to_html(fig, full_html=False)
+    return graph18_html
+
 @app.route('/categorical_analysis')
 def categorical_analysis():
     graph1 = Vehicle_Type_Distribution()
@@ -125,12 +193,23 @@ def categorical_analysis():
 @app.route('/numerical_analysis')
 def numerical_analysis():
     graph6 = Traffic_Density_by_day()
-    return render_template('numerical_analysis.html', graph6_html=graph6)
+    graph7 = Speed_Distribution()
+    graph8 = Speed_vs_Vehicle_Type()
+    graph9 = Traffic_Density_Distribution()
+    graph10 = Traffic_Density_by_Weather()
+    graph11 = Hours_vs_Speed()
+    return render_template('numerical_analysis.html', graph6_html=graph6, graph7_html=graph7, graph8_html=graph8, graph9_html=graph9, graph10_html=graph10, graph11_html=graph11)
 
-
-
-
-
+@app.route('/mixed_relations')
+def mixed_relations():
+    graph12 = Traffic_Distribution_by_Day_of_Week()
+    graph13 = Hourly_Speed_vs_Energy()
+    graph14 = City_wise_avg_Speed()
+    graph15 = Random_Event_by_Weather()
+    graph16 = Day_vvs_Hours_vs_Traffic_Density()
+    graph17 = Traffic_Density_Treemap()
+    graph18 = Economic_Condition_Distribution()
+    return render_template('mixed_relations.html', graph12_html=graph12, graph13_html=graph13, graph14_html=graph14, graph15_html=graph15, graph16_html=graph16, graph17_html=graph17, graph18_html=graph18)
 
 if __name__ == '__main__':
     if not os.path.exists('users.db'):

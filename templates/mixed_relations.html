@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+
+{% block title %}Mixed Relations Analysis{% endblock %}
+
+{% block content %}
+<div class="container-fluid py-4">
+    <h1 class="text-center mb-4">Mixed Traffic Pattern Analysis</h1>
+    <p class="text-center text-muted mb-5">Comprehensive analysis of relationships between categorical and numerical variables</p>
+
+    <!-- Weather Impact Analysis -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h3>Weather Impact on Traffic</h3>
+            <p class="text-muted">
+                Analysis of how different weather conditions affect traffic density and flow patterns,
+                showing the relationship between weather events and traffic behavior.
+            </p>
+        </div>
+        <div class="card-body">
+            {{graph12_html|safe}}
+        </div>
+    </div>
+
+    <!-- Economic-Speed Relationship -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h3>Economic Conditions vs Speed</h3>
+            <p class="text-muted">
+                Visualization of how economic conditions correlate with average traffic speed,
+                revealing patterns in traffic behavior during different economic scenarios.
+            </p>
+        </div>
+        <div class="card-body">
+            {{graph13_html|safe}}
+        </div>
+    </div>
+
+    <!-- Vehicle Type Speed Distribution -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h3>Vehicle Type Speed Analysis</h3>
+            <p class="text-muted">
+                Distribution of speeds across different vehicle types,
+                showing how various vehicles contribute to traffic flow.
+            </p>
+        </div>
+        <div class="card-body">
+            {{graph14_html|safe}}
+        </div>
+    </div>
+
+    <!-- Peak Hour Density -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h3>Peak Hour Traffic Density</h3>
+            <p class="text-muted">
+                Analysis of traffic density during peak vs non-peak hours,
+                highlighting critical periods of congestion.
+            </p>
+        </div>
+        <div class="card-body">
+            {{graph15_html|safe}}
+        </div>
+    </div>
+
+    <!-- City-wise Traffic Patterns -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h3>City-wise Traffic Analysis</h3>
+            <p class="text-muted">
+                Comparison of traffic patterns across different cities,
+                showing regional variations in traffic behavior.
+            </p>
+        </div>
+        <div class="card-body">
+            {{graph16_html|safe}}
+        </div>
+    </div>
+
+    <!-- Random Events Impact -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h3>Impact of Random Events</h3>
+            <p class="text-muted">
+                Analysis of how unexpected events affect traffic flow,
+                measuring the resilience of traffic systems.
+            </p>
+        </div>
+        <div class="card-body">
+            {{graph17_html|safe}}
+        </div>
+    </div>
+
+    <!-- Weekday Traffic Distribution -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h3>Weekday Traffic Patterns</h3>
+            <p class="text-muted">
+                Distribution of traffic density across different days,
+                showing weekly patterns and variations.
+            </p>
+        </div>
+        <div class="card-body">
+            {{graph18_html|safe}}
+        </div>
+    </div>
+</div>
+
+<style>
+.card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    margin-bottom: 20px;
+}
+.card:hover {
+    transform: translateY(-5px);
+}
+.card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    padding: 1.5rem;
+}
+.card-header h3 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+.text-muted {
+    font-size: 0.9rem;
+}
+.card-body {
+    padding: 1.5rem;
+}
+</style>
+{% endblock %}
