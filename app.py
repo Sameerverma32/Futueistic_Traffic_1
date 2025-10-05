@@ -200,6 +200,7 @@ def numerical_analysis():
     graph11 = Hours_vs_Speed()
     return render_template('numerical_analysis.html', graph6_html=graph6, graph7_html=graph7, graph8_html=graph8, graph9_html=graph9, graph10_html=graph10, graph11_html=graph11)
 
+
 @app.route('/mixed_relations')
 def mixed_relations():
     graph12 = Traffic_Distribution_by_Day_of_Week()
