@@ -14,8 +14,25 @@
         body {
             font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
             background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            background-image: url('https://valiantceo.com/wp-content/uploads/2024/06/traffic-management.jpg');
             color: #ffffff;
             overflow-x: hidden;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            position: relative;
+            background-size: cover;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            pointer-events: none;
+            z-index: 0;
         }
 
         .hero {
@@ -259,6 +276,7 @@
             position: relative;
             overflow: hidden;
             transition: all 0.5s ease;
+            backdrop-filter: blur(20px);
         }
 
         .feature-card:hover {
@@ -288,7 +306,7 @@
         .feature-description {
             font-size: 1.1rem;
             line-height: 1.6;
-            opacity: 0.9;
+            opacity:1;
         }
 
         .section-title {
@@ -488,24 +506,9 @@
                 }, 20);
             }
 
-            // Add parallax effect to hero background
-            window.addEventListener('scroll', () => {
-                const scrolled = window.pageYOffset;
-                const rate = scrolled * -0.5;
-                const hero = document.querySelector('.hero');
-                hero.style.transform = `translate3d(0, ${rate}px, 0)`;
-            });
+            
 
-            // Add glitch effect on hover for title
-            const title = document.querySelector('.hero-title');
-            title.addEventListener('mouseenter', () => {
-                title.style.animation = 'none';
-                title.style.textShadow = '2px 2px #00ffcc, -2px -2px #0066ff';
-                setTimeout(() => {
-                    title.style.textShadow = '';
-                    title.style.animation = 'titleGlow 3s ease-in-out infinite alternate';
-                }, 200);
-            });
+            
         });
     </script>
 </body>
