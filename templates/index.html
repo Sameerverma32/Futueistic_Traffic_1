@@ -311,12 +311,12 @@
 
         .section-title {
             text-align: center;
-            font-size: 3.5rem;
+            font-size: 3.9rem;
             font-weight: 800;
             margin-bottom: 20px;
-            background: linear-gradient(135deg, #ffffff, #00ffcc);
+            background: linear-gradient(135deg, #ffffff, #1ead90);
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-text-fill-color:#00ffcc;
             background-clip: text;
         }
 
@@ -326,6 +326,59 @@
             opacity: 0.8;
             max-width: 600px;
             margin: 0 auto;
+        }
+        .contact-section {
+            padding: 100px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-container {
+            display:flex;
+            flex-direction: column;
+            gap: 60px;
+            margin-top: 80px;
+            
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .contact-item {
+            background: rgba(0, 255, 204, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 255, 204, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.4s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(0, 255, 204, 0.2);
+            transform: translateX(10px);
+            box-shadow: 0 20px 40px rgba(0, 255, 204, 0.2);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .contact-label {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .contact-value {
+            font-size: 1.2rem;
+            color: #00ffcc;
+            font-weight: 600;
         }
 
         @media (max-width: 768px) {
@@ -450,6 +503,30 @@
         </div>
     </section>
 
+    <section class="contact-section" id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-subtitle">Have questions? We'd love to hear from you. Reach out and let's discuss how NeoFlow can transform your city's traffic.</p>
+        
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <div class="contact-label">Email</div>
+                    <div class="contact-value">info@neoflow.com</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-label">Phone</div>
+                    <div class="contact-value">+1 (555) 123-4567</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-label">Address</div>
+                    <div class="contact-value">123 Tech Park, Silicon Valley, CA 94025</div>
+                </div>
+            </div>
+        </div>
+    </section>
     <script>
         // Add interactive hover effects and animations
         document.addEventListener('DOMContentLoaded', function() {
